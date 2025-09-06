@@ -1,1 +1,42 @@
+# config.yaml - central configuration
+max_seq_len: 1000
+vocab_size: 5
+d_model: 256
+nhead: 8
+num_layers: 6
+transformer_max_len: 1000
 
+batch_size: 32
+device: auto   # 'cpu' | 'cuda' | 'auto'
+
+# Clustering / novelty detection
+use_umap: true
+umap:
+  n_neighbors: 15
+  min_dist: 0.1
+  n_components: 2
+
+use_hdbscan: true
+hdbscan:
+  min_cluster_size: 10
+  min_samples: 5
+
+# faiss options
+use_faiss: false
+faiss_index_path: models/faiss.index
+
+# Paths for saved models (optional)
+dna_encoder_path: models/dna_encoder.pt
+tax_classifier_path: models/taxonomy.pt
+novelty_vae_path: models/novelty_vae.pt
+
+# Limits
+max_sequences_per_request: 1000
+demo_limit: 100
+
+# QC
+min_seq_len: 50
+allowed_bases: "ATGCN"
+
+# API
+max_upload_size_bytes: 50_000_000  # 50 MB
